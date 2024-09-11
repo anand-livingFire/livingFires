@@ -6,8 +6,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f7f7f5;
-  /* width: 1440px; */
+  /* background-color: #f7f7f5; */
+  width: 1440px;
   height: 832px;
 }
 
@@ -28,4 +28,112 @@
   font-size: 1.2rem;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+/* Full page setup */
+.home-page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+/* Base container which will fade out */
+.base-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: #f7f7f5;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 3; /* Ensure it's on top initially */
+}
+
+.base-container.hidden {
+  opacity: 0;
+  pointer-events: none; /* Disable interaction once it's hidden */
+}
+
+/* Hero section with text */
+.hero {
+  text-align: center;
+}
+
+/* White panels that will slide out */
+.panel-left,
+.panel-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background-color: whitesmoke;
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out, transform 1s ease-in-out;
+}
+
+.panel-left {
+  left: 0;
+  transform: translateX(-10%); /* Initial position */
+}
+
+.panel-right {
+  right: 0;
+  transform: translateX(10%); /* Initial position */
+}
+
+.show-panelsLeft {
+  opacity: 1; /* Fade panels in */
+}
+.show-panelsRight {
+  opacity: 1; /* Fade panels in */
+}
+
+.animateLeft {
+  transform: translateX(-100%); /* Slide left */
+}
+
+.animateRight {
+  transform: translateX(100%); /* Slide right */
+}
+
+/* Overlay image (behind the panels) */
+.overlay-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  z-index: 1; /* Ensure it's behind the panels */
+}
+
+.animate .overlay-container {
+  opacity: 1;
+}
+
+.overlay-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1); /* Initial scale */
+  transition: transform 1s ease-in-out; /* Delayed zoom-in effect */
+}
+
+.show-panels {
+  opacity: 1; /* Overlay fades in when panels fade in */
+}
+
+.zoom {
+  transform: scale(1.1); /* Slight zoom in */
 }
