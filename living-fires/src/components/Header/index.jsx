@@ -5,15 +5,26 @@ import searchIcon from "../../assets/homePage/searchIcon.svg";
 import menu from "../../assets/homePage/burgerMenuIcon.svg";
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-
+  const [hidden, setHidden] = useState(false);
+  let lastScroll = 0;
   const handleScroll = () => {
-    const offset = window.scrollY;
-    if (offset > 50) {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > lastScroll && currentScroll > 100) {
+      // Scroll down and past 100px, hide header
+      setHidden(true);
+    } else {
+      // Scroll up, show header
+      setHidden(false);
+    }
+    lastScroll = currentScroll;
+
+    if (currentScroll > 1) {
       setScrolled(true);
     } else {
       setScrolled(false);
     }
   };
+ 
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -23,6 +34,9 @@ const Header = () => {
   let headerClasses = ["header"];
   if (scrolled) {
     headerClasses.push("scrolled");
+  }
+  if (hidden) {
+    headerClasses.push("hidden");
   }
 
   return (
