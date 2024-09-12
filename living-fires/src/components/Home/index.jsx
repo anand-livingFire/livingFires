@@ -8,7 +8,7 @@ const Home = () => {
   const [showPanels, setShowPanels] = useState(false);
   const [animatePanels, setAnimatePanels] = useState(false);
   const [zoomImage, setZoomImage] = useState(false);
-
+  const [showButtons, setShowButtons] = useState(false);
   useEffect(() => {
     if (hover) {
       // Step 1: Show panels after base fades out
@@ -25,6 +25,9 @@ const Home = () => {
       setTimeout(() => {
         setZoomImage(true);
       }, 2500);
+      setTimeout(() => {
+        setShowButtons(true);
+      }, 3000);
     } else {
       // Reset everything when not hovering
       setShowPanels(false);
@@ -32,21 +35,6 @@ const Home = () => {
       setZoomImage(false);
     }
   }, [hover]);
-  {
-    /* <section className="hero">
-        <div className="hero-content">
-          <h1>STUNNING FIREPLACES FOR ANY HOME</h1>
-          <p>
-            At Living Fire, we believe our work is complete only when our
-            clients are enjoying the warmth of their new fireplace with a glass
-            of wine in hand. At Living Fire, we believe our work is complete
-            only when our clients are enjoying the warmth of their new fireplace
-            with a glass of wine in hand. At Living Fire, we believe our work is
-            complete only when our clients are enjoying the warmth of.
-          </p>
-        </div>
-      </section> */
-  }
   return (
     <div
       className="home-page"
@@ -82,17 +70,22 @@ const Home = () => {
           showPanels ? "animateRight" : ""
         }`}
       ></div>
-
-      {/* Overlay Image - fades in */}
-      {/* <div className={`overlay-container ${hover ? "animate" : ""}`}>
-        <img src={homePageMainImg} alt="Overlay" className="overlay-image" />
-      </div> */}
       <div className={`overlay-container ${zoomImage ? "show-panels" : ""}`}>
         <img
           src={homePageMainImg}
           alt="Overlay"
           className={`overlay-image ${zoomImage ? "zoom" : ""}`}
         />
+        <div className={`text-group ${showButtons ? "show" : ""}`}>
+          <h1 className={`blur-text`}>LIVING FIRE</h1>
+          {/* <p className={`blur-text`}>Architectural Fireplace Design</p> */}
+        </div>
+        <div className={`button-group ${showButtons ? "show" : ""}`}>
+          <button>Wood</button>
+          <button>Electric</button>
+          <button>Gas</button>
+          <button>LPG</button>
+        </div>
       </div>
     </div>
   );
