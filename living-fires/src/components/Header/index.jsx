@@ -9,13 +9,13 @@ const Header = () => {
   let lastScroll = 0;
   const handleScroll = () => {
     const currentScroll = window.pageYOffset;
-    if (currentScroll > lastScroll && currentScroll > 100) {
-      // Scroll down and past 100px, hide header
-      setHidden(true);
-    } else {
-      // Scroll up, show header
-      setHidden(false);
-    }
+    // if (currentScroll > lastScroll && currentScroll > 100) {
+    //   // Scroll down and past 100px, hide header
+    //   setHidden(true);
+    // } else {
+    //   // Scroll up, show header
+    //   setHidden(false);
+    // }
     lastScroll = currentScroll;
 
     if (currentScroll > 1) {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import homePageMainImg from "../../assets/homePage/homePageMainImg.png";
 import "./home.css";
 import Header from "../Header";
+import Collections from "../Collections";
 
 const Home = () => {
   const [hover, setHover] = useState(false);
@@ -36,58 +37,61 @@ const Home = () => {
     }
   }, [hover]);
   return (
-    <div
-      className="home-page"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(true)}
-    >
-      {/* Base Component - this will fade out */}
-      <div className={`base-container ${hover ? "hidden" : ""}`}>
-        <section className="hero">
-          <div className="hero-content">
-            <h1>STUNNING FIREPLACES FOR ANY HOME</h1>
-            <p>
-              At Living Fire, we believe our work is complete only when our
-              clients are enjoying the warmth of their new fireplace with a
-              glass of wine in hand. At Living Fire, we believe our work is
-              complete only when our clients are enjoying the warmth of their
-              new fireplace with a glass of wine in hand. At Living Fire, we
-              believe our work is complete only when our clients are enjoying
-              the warmth of.
-            </p>
-          </div>
-        </section>
-      </div>
+    <>
+      <div
+        className="home-page"
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(true)}
+      >
+        {/* Base Component - this will fade out */}
+        <div className={`base-container ${hover ? "hidden" : ""}`}>
+          <section className="hero">
+            <div className="hero-content">
+              <h1>STUNNING FIREPLACES FOR ANY HOME</h1>
+              <p>
+                At Living Fire, we believe our work is complete only when our
+                clients are enjoying the warmth of their new fireplace with a
+                glass of wine in hand. At Living Fire, we believe our work is
+                complete only when our clients are enjoying the warmth of their
+                new fireplace with a glass of wine in hand. At Living Fire, we
+                believe our work is complete only when our clients are enjoying
+                the warmth of.
+              </p>
+            </div>
+          </section>
+        </div>
 
-      {/* White panels that will slide out */}
-      <div
-        className={`panel-left  ${showPanels ? "show-panelsLeft" : ""} ${
-          showPanels ? "animateLeft" : ""
-        }`}
-      ></div>
-      <div
-        className={`panel-right ${showPanels ? "show-panelsRight" : ""} ${
-          showPanels ? "animateRight" : ""
-        }`}
-      ></div>
-      <div className={`overlay-container ${zoomImage ? "show-panels" : ""}`}>
-        <img
-          src={homePageMainImg}
-          alt="Overlay"
-          className={`overlay-image ${zoomImage ? "zoom" : ""}`}
-        />
-        <div className={`text-group ${showButtons ? "show" : ""}`}>
-          <h1 className={`blur-text`}>LIVING FIRE</h1>
-          {/* <p className={`blur-text`}>Architectural Fireplace Design</p> */}
-        </div>
-        <div className={`button-group ${showButtons ? "show" : ""}`}>
-          <button>Wood</button>
-          <button>Electric</button>
-          <button>Gas</button>
-          <button>LPG</button>
+        {/* White panels that will slide out */}
+        <div
+          className={`panel-left  ${showPanels ? "show-panelsLeft" : ""} ${
+            showPanels ? "animateLeft" : ""
+          }`}
+        ></div>
+        <div
+          className={`panel-right ${showPanels ? "show-panelsRight" : ""} ${
+            showPanels ? "animateRight" : ""
+          }`}
+        ></div>
+        <div className={`overlay-container ${zoomImage ? "show-panels" : ""}`}>
+          <img
+            src={homePageMainImg}
+            alt="Overlay"
+            className={`overlay-image ${zoomImage ? "zoom" : ""}`}
+          />
+          <div className={`text-group ${showButtons ? "show" : ""}`}>
+            <h1 className={`blur-text`}>LIVING FIRE</h1>
+            {/* <p className={`blur-text`}>Architectural Fireplace Design</p> */}
+          </div>
+          <div className={`button-group ${showButtons ? "show" : ""}`}>
+            <button>Wood</button>
+            <button>Electric</button>
+            <button>Gas</button>
+            <button>LPG</button>
+          </div>
         </div>
       </div>
-    </div>
+      {/* <Collections /> */}
+    </>
   );
 };
 
